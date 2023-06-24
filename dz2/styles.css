@@ -1,0 +1,18 @@
+h1 {
+    background: Aquamarine
+}
+.paragraph-1 {
+    background-color: PaleGreen;
+    color: OliveDrab;
+    front-size: 32pt;
+ }
+ .paragraph-2 {
+    border: 10px solid MediumSpringGreen;
+    front-size: 24pt;
+    margin-bottom
+ }
+ .paragraph-3 {
+    front-weight: bold;
+    front-family: Courier New;
+ }
+
