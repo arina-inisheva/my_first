@@ -17,10 +17,16 @@ class Advertisement(models.Model):
     @admin.display(description='Дата создания')
     def created_date(self):
         if self.created_at.date() == timezone.now().date():
-            created_time = self.created_at.time().strtime('%H:%M:%S')
+            created_time = self.created_at.time().strftime('%H:%M:%S')
             return format_html('<span style = "color: green; front-weight:bold;">Сегодня в {}</span>', created_time)
         return self.created_at
 
+    @admin.display(description='Дата обновления')
+    def updated_date(self):
+        if self.update_at.date() == timezone.now().date():
+            updated_time = self.update_at.time().strftime('%H:%M:%S')
+            return format_html('<span style = "color: blue; front-weight:bold;">Сегодня в {}</span>', updated_time)
+        return self.updated_at
     def __str__(self):
         return f"Adverisement(id={self.id}, title={self.title}, price={self.price}"
 
