@@ -30,6 +30,11 @@ class Advertisement(models.Model):
             updated_time = self.update_at.time().strftime('%H:%M:%S')
             return format_html('<span style = "color: blue; front-weight:bold;">Сегодня в {}</span>', updated_time)
         return self.update_at
+
+    @admin.display(description='Уменьшенное изображение')
+    def image_tumb(self):
+        return format_html('<img src="{}" style="width: 130px; height: 100px"/>', self.image.url)
+
     def __str__(self):
         return f"Adverisement(id={self.id}, title={self.title}, price={self.price}"
 
