@@ -95,88 +95,34 @@
       </div>
     </form>
   </div>
+  {%for adv in advertisements %}
   <div class="col">
     <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
       <div class="row g-0">
         <div class="col-md-4">
           <a href="advertisement.html" class="nav-link">
-            <img src="{% static 'img/127.jpg' %}" class="img-fluid rounded-start" alt="Card title">
+            <img src="{% if adv.image %}{{ adv.image.url }} {% endif %}" class="img-fluid rounded-start" alt="Card title">
           </a>
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">
-              <a href="advertisement.html" class="nav-link"><strong>Шампунь от Лосяша</strong></a>
+              <a href="advertisement.html" class="nav-link"><strong>{{ adv.title }}</strong></a>
             </h5>
             <a href="advertisement.html" class="nav-link">
               <p class="card-text">
-                Когда я пользовался обычным шампунем,
-                у меня на голове расло невесть что.
-                А теперь мои волосы имеют максимальный обьём
+                {{ adv.discription }}
               </p>
-              <span>Автор: Лосяш</span>
-              <p class="card-text"><small class="text-muted">Размещено: 17.07.2023 (15:49)</small></p>
+              <span>Автор: {{adv.user}}</span>
+              <p class="card-text"><small class="text-muted">Размещено: {{ adv.created_at }}</small></p>
+              <span>Цена: {{adv.price}}</span>
             </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <a href="advertisement.html" class="nav-link">
-            <img src="{% static 'img/124.jpg' %}" class="img-fluid rounded-start" alt="Card title">
-          </a>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="advertisement.html" class="nav-link"><strong>Огурцы от Копатыча</strong></a>
-            </h5>
-            <a href="advertisement.html" class="nav-link">
-              <p class="card-text">
-                Ты любишь работать и умеешь отдыхать.
-                Этот мир лежит у твоих лап.
-                Ты чувствуешь вкус настоящей жизни.
-                Потому, что у тебя есть он - огурец от Копатыча.
-              </p>
-              <span>Автор: Копатыч</span>
-              <p class="card-text"><small class="text-muted">Размещено: 16.07.2023 (12:32) </small></p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <a href="advertisement.html" class="nav-link">
-            <img src="{% static 'img/126.webp' %}" class="img-fluid rounded-start" alt="Card title">
-          </a>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="advertisement.html" class="nav-link"><strong>Продаю лыжу</strong></a>
-            </h5>
-            <a href="advertisement.html" class="nav-link">
-              <p class="card-text">
-                -Вы знаете что это?
-                -Хм...по-моему, это лыжа.
-                - И если вы купите эту лыжу сейчас,
-                то вторую лыжу вы получите совершенно бесплатно!
-                - Ой, они же разного цвета!
+    {% endfor %}
 
-              </p>
-              <span>Автор: Савунья </span>
-              <p class="card-text"><small class="text-muted">Размещено: 20.06.2023</small></p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <footer style="padding: 100px;" class="bg-primary">
   <nav class="navbar navbar-expand-sm navbar-dark">
     <a class="navbar-brand" href="#">Добавьте</a>
