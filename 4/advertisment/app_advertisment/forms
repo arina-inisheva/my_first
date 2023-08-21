@@ -1,0 +1,8 @@
+from django import forms
+
+class AdvertisementForm(forms.Form):
+tile = forms.CharField(max_leight=64)
+description = forms.CharField(widget=forms.Textarea)
+price = forms.DecimalFiled()
+auction = forms.BoolField(required=False)
+image = Forms.ImageField(required=False)

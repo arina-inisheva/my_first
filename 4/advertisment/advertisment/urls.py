@@ -19,10 +19,14 @@ from django.urls import path, include
 from django.conf import settings
 from  django.conf.urls.static import static
 
+from app_advertisment.views import advertisment
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app_advertisment.urls')),
     path('lesson4', include('app_lesson_4.urls')),
+    path('advertisement_post.html/', advertisment, name='adv_post'),
+
 
 ]
 if settings.DEBUG :
