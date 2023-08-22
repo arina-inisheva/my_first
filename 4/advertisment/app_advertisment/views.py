@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from .models import Advertisement
-from .Forms import  AdvertisementForm
+from .Forms import  DBAdvertisementForm
 
 
 
@@ -30,7 +30,7 @@ def profile_html(request):
 
 def advertisment(request):
     if request.method == 'POST':
-        form = AdvertisementForm(request.POST, request.FILES)
+        form = DBAdvertisementForm(request.POST, request.FILES)
         if form.is_valid():
             advertisement = Advertisement(**form.cleaned_data)
             advertisement.user = request.user
@@ -38,6 +38,6 @@ def advertisment(request):
             url = reverse('main_page')
             return redirect(url)
     else:
-        form = AdvertisementForm()
+        form = DBAdvertisementForm()
     context = {'form': form}
     return render(request, 'advertisement-post.html', context)
