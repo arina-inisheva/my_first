@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
-
+{% block title %}
+Войти
+{% endblock %}
 
   <ul class="nav nav-pills sticky-top bg-white nav-fill">
     <li class="nav-item">
@@ -15,7 +16,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'advertisement_post' %}">
+      <a class="nav-link" href="{% url 'adv_post' %}">
         <span style="font-weight: bold;">Разместить объявление</span>
       </a>
     </li>
@@ -25,17 +26,17 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{% url 'login_html' %}">
+      <a class="nav-link active" aria-current="page" href="{% url 'login' %}">
         <span style="font-weight: bold;">Войти</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'profile_html' %}">
+      <a class="nav-link" href="{% url 'profile' %}">
         <span style="font-weight: bold;">Профиль</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{% url 'logout' %}">
         <span style="font-weight: bold;">Выйти</span>
       </a>
     </li>
@@ -48,12 +49,12 @@
       </div>
     </div>
   </div>
-    <form method="post">
+    <form method="post"> {% csrf_token %}
       <div class="row mb-3">
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Username</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input type="text" class="form-control form-control-lg">
+            <input  name="username" id="username" type="text" class="form-control form-control-lg">
           </div>
         </div>
       </div>
@@ -61,7 +62,7 @@
         <div class="col">
           <label class="col-sm-4 col-form-label offset-4">Password</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input type="password" class="form-control form-control-lg">
+            <input name="password" id="password" type="password" class="form-control form-control-lg">
           </div>
         </div>
       </div>

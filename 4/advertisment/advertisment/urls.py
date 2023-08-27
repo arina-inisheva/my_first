@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('app_advertisment.urls')),
     path('lesson4', include('app_lesson_4.urls')),
     path('advertisement_post.html/', advertisment, name='adv_post'),
+    path('myauth/' , include('app_auth.urls') )
 
 
 ]
