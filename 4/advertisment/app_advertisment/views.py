@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponse
 from .models import Advertisement
 from .Forms import  DBAdvertisementForm
 from django.contrib.auth.decorators import login_required
@@ -15,7 +14,6 @@ def index(request):
 def top_sellers(request):
     return render(request, 'app_advertisementtop-sellers.html')
 
-
 def main_page(request):
     return render(request, 'app_advertisement/index.html')
 
@@ -23,12 +21,12 @@ def advertisement_post(request):
     return render(request, 'advertisement-post.html')
 
 def register_html(request):
-    return render(request, 'register.html')
+    return render(request, 'app_auth/register.html')
 def login_html(request):
-    return render(request, 'login.html' )
+    return render(request, 'app_auth/login.html' )
 
 def profile_html(request):
-    return  render(request, 'profile.html')
+    return  render(request, 'app_auth/profile.html')
 
 @login_required(login_url=reverse_lazy('login'))
 def advertisment(request):
