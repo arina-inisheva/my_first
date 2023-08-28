@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login, logout
@@ -30,13 +31,14 @@ def logout_view(request):
     return redirect(reverse('login'))
 
 def register_view(request):
-    if request.POST == 'POST':
-        form = UserCreationForm()
-        if form.is_valid():
-            form.save()
+    if request.method == 'POST':
+        user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
+        user.save()
+        login(request, user)
+        return redirect(reverse('main_page'))
     else:
         form = UserCreationForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'register.html', context)
+        context = {
+            'form': form
+        }
+        return render(request, 'app_auth/register.html', context)
